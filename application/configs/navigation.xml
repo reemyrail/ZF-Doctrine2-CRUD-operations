@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configdata>
+    <nav>
+        <home>
+            <label>Home</label>
+            <controller>index</controller>
+            <action>index</action>
+            <route>default</route>
+        </home>
+        <about>
+            <label>Info</label>
+            <module>default</module>
+            <controller>about</controller>
+            <action>index</action>
+            <route>default</route>
+        </about>
+        <login>
+            <label>Login</label>
+            <module>default</module>
+            <controller>login</controller>
+            <action>index</action>
+            <route>default</route>
+        </login>
+        <servicio>
+            <label>Programmingmate</label>
+            <uri>http://programmingmate.com/</uri>
+        </servicio>
+        <admin>
+            <label>CRUD operations</label>
+            <controller>federico</controller>
+            <action>clientes</action>
+            <resource>federico</resource>
+            <route>default</route>
+            <privilege>admin</privilege>  
+            <pages>
+                <alta>
+                    <label>New User</label>
+                    <controller>users</controller>
+                    <action>create</action>
+                    <resource>users</resource>
+                    <route>default</route>
+                    <privilege>admin</privilege>
+                </alta>
+            </pages>
+        </admin>
+    </nav>
+</configdata>

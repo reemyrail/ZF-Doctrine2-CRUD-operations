@@ -1,0 +1,30 @@
+<?php
+$doctypeHelper = new Zend_View_Helper_Doctype();
+$doctypeHelper->doctype('XHTML1_STRICT');
+?>
+<?= $this->doctype(); ?>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <?php
+        $this->headLink()->appendStylesheet('css/reset.css');
+        $this->headLink()->appendStylesheet('/css/960_12_col.css');
+        $this->headLink()->appendStylesheet('/css/960.css');
+        echo  $this->headLink()->appendStylesheet('/css/styles.css');
+       
+        $this->headScript(); 
+        echo $this->headScript()->appendFile($this->baseUrl('/js/jquery-1.6.1.min.js')); 
+        ?> 
+        <title>ProgrammingMate's Basic Crud App</title>
+    </head>
+      <body>
+        <div id="container">
+            <div id="header"><?= $this->render('header.phtml') ?></div>
+            <div id="content"><?= $this->layout()->content; ?></div>
+            <div class="clear"></div>
+            <div id="footer"><?= $this->render('footer.phtml') ?></div>
+        </div>
+    </body>
+</html>
+
+

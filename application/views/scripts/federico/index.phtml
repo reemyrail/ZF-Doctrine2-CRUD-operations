@@ -1,0 +1,41 @@
+<br/>
+<h1>Users</h1>
+
+<table id="users">
+    <caption>Users</caption>
+    <thead>
+        <tr>
+            <th>Name (Click user Name to edit)</th>
+            <th>Email (Click user email to delete)</th>
+            <th>Url</th>
+            <th>Languages</th>
+            <th>Created</th>
+            <th class="nobg">Role</th>
+        </tr>
+    </thead>
+    <tbody>
+<?php if (count($this->show) == 0): ?>
+        <tr><td colspan="2">No results</td></tr>
+<?php endif; ?>
+        
+<?php foreach ($this->show as $user): ?>
+        <tr>
+            <td class="spec"><a href="/users/edit/id/<?php echo $user->getId(); ?>"><?php echo $user->getName(); ?></a></td>
+            <td><a href="/users/delete/id/<?php echo $user->getId(); ?>"><?php echo $user->getEmail(); ?></a></td>
+            <td><?php echo $user->getUrl(); ?></td>
+            <td>
+                <ul>
+            <?php
+            foreach ($user->getLanguages() as $p){
+                $uppr = ucfirst($p->getLanguageName());
+                echo "<li>$uppr</li>";
+            }
+            ?>
+                </ul>
+            </td>
+            <td><?php echo $user->getCreated()->format('Y-m-d H:i:s'); ?></td>
+            <td><?php echo $user->getRole(); ?></td>
+        </tr>
+<?php endforeach; ?>
+    </tbody>
+</table>

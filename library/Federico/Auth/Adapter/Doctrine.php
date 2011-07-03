@@ -1,4 +1,5 @@
 <?php
+use \Federico\Entity\UserService;
 
 class Federico_Auth_Adapter_Doctrine implements Zend_Auth_Adapter_Interface
 {
@@ -51,6 +52,13 @@ class Federico_Auth_Adapter_Doctrine implements Zend_Auth_Adapter_Interface
      */
     protected $_authenticateResultInfo = null;
     
+    /**
+     * $_salt
+     * 
+     * @var string
+     */
+     protected $_salt = null;
+     
     /**
      * __construct() - Sets configuration options
      *
@@ -164,6 +172,7 @@ class Federico_Auth_Adapter_Doctrine implements Zend_Auth_Adapter_Interface
     public function authenticate()
     {
         $this->_authenticateSetup();
+        $this->_saltSetup();
         $query = $this->_getQuery();
         $resultIdentities = $this->_performQuery($query);
         //var_dump($resultIdentities);die;
@@ -213,6 +222,12 @@ class Federico_Auth_Adapter_Doctrine implements Zend_Auth_Adapter_Interface
         return true;
     }
 
+	protected function _saltSetup()
+	{
+		$this->_salt = UserService::$SALT;
+		return true;
+	}
+	
     /**
      * _getQuery() - This method creates a Doctrine\ORM\Query object that
      * is completely configured to be queried against the database.

@@ -17,6 +17,7 @@ use Federico\Entity\UserRepository;
  */
 class UserService {
 
+	public static $SALT = '$2a$07$ib3Ty0uw0n7cr4cKtH1ZmM$';
     protected $em;
     protected $entity;
     protected $rep;
@@ -94,7 +95,7 @@ class UserService {
     {
 		//yeah, I know... but I'm setting up this as a CRUD example, not how to implement
 		//an unbreakable security layer.
-        $password = crypt($rawPass, '$2a$07$ib3Ty0uw0n7cr4cKtH1ZmM$');
+        $password = crypt($rawPass, self::$SALT);
         return $password;
     }
 }

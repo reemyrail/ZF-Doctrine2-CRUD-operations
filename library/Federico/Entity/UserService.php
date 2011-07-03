@@ -17,7 +17,7 @@ use Federico\Entity\UserRepository;
  */
 class UserService {
 
-	public static $SALT = '$2a$07$ib3Ty0uw0n7cr4cKtH1ZmM$';
+    public static $SALT = '$2a$07$ib3Ty0uw0n7cr4cKtH1ZmM$';
     protected $em;
     protected $entity;
     protected $rep;
